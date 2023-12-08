@@ -55,7 +55,7 @@ def save_sogo_list_file(query, max_page_limit,sogo_headers):
             sheet1.write(row, column, date)
             column += 1
 
-    file_name = f"D:\\wang\\Desktop\\sogo_{query}.xls"
+    file_name = f"E:\\spider_file\\sogo_{query}.xls"
     xls.save(file_name)
 
     return file_name

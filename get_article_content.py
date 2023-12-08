@@ -5,7 +5,7 @@ bs4.element.Tag
 
 def save_article(weixin_url,article_name):
 
-    file_name = f"D:\\wang\\Desktop\\{article_name.strip().replace(' ','')[0:7]}.txt"
+    file_name = f"E:\\spider_file\\{article_name.strip().replace(' ','')[0:7]}.txt"
 
     url = weixin_url
 

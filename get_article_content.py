@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import  bs4
-bs4.element.Tag
+
 
 def save_article(weixin_url,article_name):
 
@@ -19,18 +19,21 @@ def save_article(weixin_url,article_name):
     # print(response.text)
     print(url)
     soup = BeautifulSoup(response.text, 'lxml')
-    try:
-        # 文章链接失效
-        content = (soup.find('body', attrs={"id": "activity-detail"})
-                   .find('div', attrs={"id": "js_article"})
-                   .find('div', attrs={"id": "js_base_container"})
-                   .find('div', attrs={"id": "page-content"})
-                   .find('div', attrs={"class": "rich_media_area_primary_inner"}))
-    except:
-        return "Error"
 
-    file = open(file=file_name,mode='w+',encoding='utf-8')
-    file.write(str(content))
+    # 文章链接失效
+    content = (soup.find('body', attrs={"id": "activity-detail"})
+               .find('div', attrs={"id": "js_article"})
+               .find('div', attrs={"id": "js_base_container"})
+               .find('div', attrs={"id": "page-content"})
+               .find('div', attrs={"class": "rich_media_area_primary_inner"}))
+
+
+    # utf-8和gbk都会报错
+    file = open(file=file_name,mode='w+',encoding='gbk')
+    try:
+        file.write(str(content))
+    except:
+        file.write(str(content).encode('utf-8').decode('gbk'))
     file.close()
 
     return file_name

@@ -10,11 +10,11 @@ def redirect(sogo_to_weixin_url, sogo_headers):
     try:
         scr_funcs = scr_func[scr_func.index('var'):scr_func.index('window')].split(';')
     except:
-        print(scr_funcs)
+        print('找不到重定向链接')
     url = ''
     for func in scr_funcs:
         try:
             url += func.strip()[func.strip().index('\'') + 1:func.strip().rindex('\'')]
         except:
-            print('重定向链接中......')
+            print('\n')
     return url.strip()
